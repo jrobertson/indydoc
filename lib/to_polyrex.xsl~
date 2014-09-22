@@ -40,9 +40,6 @@
         <xsl:element name='scope'>
           <xsl:value-of select='@scope'/>
         </xsl:element>
-        <xsl:element name='args'>
-          <xsl:value-of select='@args'/>
-        </xsl:element>
         <xsl:element name="desc"><xsl:text> </xsl:text></xsl:element>
       </xsl:element>
       <xsl:element name="records"></xsl:element>

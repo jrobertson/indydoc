@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'indydoc'
-  s.version = '0.2.0'
+  s.version = '0.2.1'
   s.summary = 'Generate source code documentation from source code + Polyrex file.'
   s.authors = ['James Robertson']
   s.files = Dir['lib/**/*']
