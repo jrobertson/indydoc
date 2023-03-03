@@ -68,6 +68,36 @@ class IndyDoc
     @px ? px.save(filepath) : File.write(filepath, @px=self.to_px)       
     puts 'saved'
   end
+  
+  def to_md()
+    
+    doc = Rexle.new(@raw_xml)
+    
+    lines = doc.root.elements.map do |klass|
+
+      classname = "# %s\n\n" % klass.attributes[:name]
+
+      methods = klass.elements.map do |meth|
+
+        mname = "## %s\n" % meth.attributes[:name]
+        mscope = "scope: %s\n" % meth.attributes[:scope]
+        margs = "args: \n" 
+        args = meth.attributes[:args].split(/, */)\
+                .map {|x| "  %s # # " % x}.join("\n") + "\n"
+        desc = "desc: \n\n" 
+
+        [mname, mscope, margs, args, desc].join("\n")
+
+      end.join("\n")
+
+      classname + methods
+
+    end
+
+    lines.join("\n")
+
+    
+  end
 
   def to_px
     doc  = Nokogiri::XML(@raw_xml)
